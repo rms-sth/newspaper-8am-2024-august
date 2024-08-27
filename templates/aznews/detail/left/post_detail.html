@@ -15,7 +15,7 @@
         <a href="#"><i class="fa fa-tags"></i>{{ post.tag.all|join:", " }}</a>
       </li>
       <li>
-        <a href="#"><i class="fa fa-comments"></i> 03 Comments</a>
+        <a href="#"><i class="fa fa-comments"></i> {{ post.comment_set.count }} Comments</a>
       </li>
       <li>
         <a href="#"><i class="fa fa-eye"></i>{{ post.views_count }} Views</a>
