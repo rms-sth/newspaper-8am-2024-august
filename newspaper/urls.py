@@ -23,4 +23,9 @@ urlpatterns = [
         views.CommentView.as_view(),
         name="post-comment",
     ),
+    path(
+        "contact/",
+        views.ContactView.as_view(),
+        name="contact",
+    ),
 ]
