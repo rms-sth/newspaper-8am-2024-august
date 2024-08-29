@@ -28,4 +28,19 @@ urlpatterns = [
         views.ContactView.as_view(),
         name="contact",
     ),
+    path(
+        "post-by-category/<int:category_id>/",
+        views.PostByCategoryView.as_view(),
+        name="post-by-category",
+    ),
+    path(
+        "post-by-tag/<int:tag_id>/",
+        views.PostByTagView.as_view(),
+        name="post-by-tag",
+    ),
+    path(
+        "newsletter/",
+        views.NewsletterView.as_view(),
+        name="newsletter",
+    ),
 ]

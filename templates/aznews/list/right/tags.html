@@ -5,7 +5,7 @@
     {% for tag in tags %}
  
       <li>
-        <a href="#">{{ tag.name }}</a>
+        <a href="{% url 'post-by-tag' tag.pk %}">{{ tag.name }}</a>
       </li>
  
     {% endfor %}
