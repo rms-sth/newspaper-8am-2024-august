@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.views import View
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 
 from newspaper.forms import CommentForm, ContactForm, NewsletterForm
 from newspaper.models import Post
@@ -204,14 +204,14 @@ class PostSearchView(View):
     def get(self, request, *args, **kwargs):
         query = request.GET["query"]  # query=nepal search => title=nepal or content=nepal
         post_list = Post.objects.filter(
-            (Q(title__icontains=query) | Q(content__icontains=query))
+            (Q(title__icontains=query) | Q(content__icontains=query)) # NEPAL, Nepal
             & Q(status="active")
             & Q(published_at__isnull=False)
         ).order_by("-published_at")
 
         # pagination start
-        page = request.GET.get("page", 1)  # 1
-        paginate_by = 3
+        page = request.GET.get("page", 1)  # 2
+        paginate_by = 2
         paginator = Paginator(post_list, paginate_by)
         try:
             posts = paginator.page(page)
@@ -224,3 +224,7 @@ class PostSearchView(View):
             self.template_name,
             {"page_obj": posts, "query": query},
         )
+
+
+class AboutView(TemplateView):
+    template_name = "aznews/about.html"

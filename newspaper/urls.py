@@ -48,4 +48,9 @@ urlpatterns = [
         views.PostSearchView.as_view(),
         name="post-search",
     ),
+    path(
+        "about/",
+        views.AboutView.as_view(),
+        name="about",
+    ),
 ]
