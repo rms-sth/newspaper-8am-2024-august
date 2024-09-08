@@ -9,12 +9,13 @@ from django.contrib import messages
 from datetime import timedelta
 from django.utils import timezone
 
+# Post.objects.all() => select * from posts
 
 class HomeView(ListView):
     model = Post
     template_name = "aznews/home.html"
     context_object_name = "posts"
-    queryset = Post.objects.filter(published_at__isnull=False, status="active")[:4]
+    queryset = Post.objects.filter(published_at__isnull=False, status="active")[:4] # Django ORM => Object Relational Mapping
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
